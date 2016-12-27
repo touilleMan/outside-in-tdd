@@ -1,8 +1,8 @@
 
 class Account:
-    def deposit(self):
+    def deposit(self, amount):
         pass
-    def withdraw(self):
+    def withdraw(self, amount):
         pass
     def print_statement(self):
         pass

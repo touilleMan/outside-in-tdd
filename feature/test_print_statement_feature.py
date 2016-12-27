@@ -1,10 +1,15 @@
 from unittest.mock import Mock
-from src.console import Console
+from app.console import Console
+from app.bank import Account
 
 def test_print_statement_containing_all_transactions():
     # Given
     console = Mock(Console)
-    account = Mock(["print_statement"])
+    account = Account()
+
+    account.deposit(1000)
+    account.withdraw(100)
+    account.deposit(500)
 
     # When
     account.print_statement()

@@ -6,8 +6,8 @@ From:
 
 Create a simple bank application with the following fetaures:
 
-- Deposit into Account
-- Withdraw form an Account
+- Deposit into an Account
+- Withdraw from an Account
 - Print a bank statement to the console
 
 ## Acceptance criteria
@@ -27,9 +27,9 @@ Statement should have transactions in the following format:
 
 ```
 class Account:
-    def deposit(self):
+    def deposit(self, amount):
         pass
-    def withdraw(self):
+    def withdraw(self, amount):
         pass
     def print_statement(self):
         pass
