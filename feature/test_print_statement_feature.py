@@ -1,22 +1,25 @@
-from unittest.mock import Mock
+from unittest.mock import Mock, call
 from app.console import Console
 from app.bank import Account
 
-def test_print_statement_containing_all_transactions():
-    # Given
-    console = Mock(Console)
-    account = Account()
+class TestPrintStatementFeature:
+    def setup_method(self):
+        self.account = Account()
 
-    account.deposit(1000)
-    account.withdraw(100)
-    account.deposit(500)
+    def test_print_statement_containing_all_transactions(self):
+        console = Mock(Console)
 
-    # When
-    account.print_statement()
+        self.account.deposit(1000)
+        self.account.withdraw(100)
+        self.account.deposit(500)
 
-    # Then
-    console.print_line.assert_called_with("DATE | AMOUNT | BALANCE")
-    console.print_line.assert_called_with("10/04/2014 | 500.00 | 1400.00")
-    console.print_line.assert_called_with("02/04/2014 | -100.00 | 900.00")
-    console.print_line.assert_called_with("01/04/2014 | 1000.00 | 1000.00")
+        self.account.print_statement()
+
+        calls = [
+            call("DATE | AMOUNT | BALANCE"),
+            call("10/04/2014 | 500.00 | 1400.00"),
+            call("02/04/2014 | -100.00 | 900.00"),
+            call("01/04/2014 | 1000.00 | 1000.00"),
+        ]
+        console.print_line.assert_has_calls(calls)
 
