@@ -1,6 +1,9 @@
 
-.PHONY: feature
+.PHONY: feature test
 
-feature:
+feature: test
 	pytest feature
+
+test:
+	pytest test
 

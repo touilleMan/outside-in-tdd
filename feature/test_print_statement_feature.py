@@ -1,10 +1,13 @@
 from unittest.mock import Mock, call
 from app.console import Console
-from app.bank import Account
+from app.account import Account
+from app.transaction_repository import TransactionRepository
+
 
 class TestPrintStatementFeature:
     def setup_method(self):
-        self.account = Account()
+        transaction_repository = TransactionRepository()
+        self.account = Account(transaction_repository)
 
     def test_print_statement_containing_all_transactions(self):
         console = Mock(Console)
@@ -22,4 +25,3 @@ class TestPrintStatementFeature:
             call("01/04/2014 | 1000.00 | 1000.00"),
         ]
         console.print_line.assert_has_calls(calls)
-
