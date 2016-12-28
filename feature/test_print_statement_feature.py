@@ -11,7 +11,7 @@ class TestPrintStatementFeature:
     def setup_method(self):
         clock = Mock(Clock)
         transaction_repository = TransactionRepository(clock)
-        statement_printer = StatementPrinter
+        statement_printer = StatementPrinter()
         self.account = Account(transaction_repository, statement_printer)
 
     def test_print_statement_containing_all_transactions(self):

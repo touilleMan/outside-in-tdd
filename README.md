@@ -28,11 +28,14 @@ Statement should have transactions in the following format:
 ```
 class Account:
     def deposit(self, amount):
-        pass
+        raise NotImplementedError()
+
     def withdraw(self, amount):
-        pass
+        raise NotImplementedError()
+
     def print_statement(self):
-        pass
+        raise NotImplementedError()
+
 ```
 
 2. You are not allowed to add any other public method to this class.

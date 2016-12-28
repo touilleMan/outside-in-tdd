@@ -11,6 +11,5 @@ class TestClockShould:
 
 
 class TestableClock(Clock):
-
     def today(self):
         return datetime.date(2015, 4, 24)
