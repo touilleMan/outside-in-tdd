@@ -1,3 +1,10 @@
+import datetime
+
+
 class Clock:
+
     def today_as_string(self):
-        raise NotImplementedError()
+        return self.today().strftime("%d/%m/%Y")
+
+    def today(self):
+        return datetime.date.today()
