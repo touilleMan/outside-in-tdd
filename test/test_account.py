@@ -1,12 +1,15 @@
 from unittest.mock import Mock
 from app.account import Account
+from app.statement_printer import StatementPrinter
 from app.transaction_repository import TransactionRepository
+from app.transaction import Transaction
 
 
 class TestAccountShould:
     def setup_method(self):
         self.transaction_repository = Mock(TransactionRepository)
-        self.account = Account(self.transaction_repository)
+        self.statement_printer = Mock(StatementPrinter)
+        self.account = Account(self.transaction_repository, self.statement_printer)
 
     def test_store_a_deposit_transaction(self):
         self.account.deposit(100)
@@ -15,3 +18,11 @@ class TestAccountShould:
     def test_store_a_withdrawal_transaction(self):
         self.account.withdraw(100)
         self.transaction_repository.add_withdrawal.assert_called_with(100)
+
+    def test_print_a_statement(self):
+        transactions = [Transaction()]
+        self.transaction_repository.all_transactions.return_value = transactions
+
+        self.account.print_statement()
+
+        self.statement_printer.print.assert_called_with(transactions)

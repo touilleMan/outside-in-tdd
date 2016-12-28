@@ -1,7 +1,7 @@
 
 .PHONY: feature test
 
-feature: test
+feature:
 	pytest feature
 
 test:

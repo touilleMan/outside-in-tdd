@@ -1,13 +1,15 @@
 from unittest.mock import Mock, call
 from app.console import Console
 from app.account import Account
+from app.statement_printer import StatementPrinter
 from app.transaction_repository import TransactionRepository
 
 
 class TestPrintStatementFeature:
     def setup_method(self):
         transaction_repository = TransactionRepository()
-        self.account = Account(transaction_repository)
+        statement_printer = StatementPrinter
+        self.account = Account(transaction_repository, statement_printer)
 
     def test_print_statement_containing_all_transactions(self):
         console = Mock(Console)
