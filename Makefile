@@ -7,3 +7,6 @@ feature:
 test:
 	pytest test
 
+run:
+	python -m app.application
+
