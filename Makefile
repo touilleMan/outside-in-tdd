@@ -1,5 +1,6 @@
 
 .PHONY: test
+.DEFAULT_GOAL := test-all
 
 pyenv:
 	pyenv install -s 3.4.5
