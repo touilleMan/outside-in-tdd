@@ -9,11 +9,17 @@ pyenv:
 requirements:
 	pip install -Ur requirements.txt
 
+test:
+	pytest test
+
 test-feature:
 	pytest feature
 
-test:
-	pytest test
+test-unit:
+	pytest -m unit
+
+test-integrated:
+	pytest -m integrated
 
 test-all:
 	pytest test feature

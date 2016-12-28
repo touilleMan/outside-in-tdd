@@ -1,11 +1,13 @@
 from unittest.mock import Mock
+from pytest import mark
 
-from app.account import Account
-from app.statement_printer import StatementPrinter
-from app.transaction import Transaction
-from app.transaction_repository import TransactionRepository
+from app.domain.account import Account
+from app.domain.transaction import Transaction
+from app.domain.statement_printer import StatementPrinter
+from app.domain.transaction_repository import TransactionRepository
 
 
+@mark.unit
 class TestAccountShould:
     def setup_method(self):
         self.transaction_repository = Mock(TransactionRepository)

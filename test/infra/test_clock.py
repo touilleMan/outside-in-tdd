@@ -1,8 +1,10 @@
 import datetime
+from pytest import mark
 
-from app.clock import Clock
+from app.infra.clock import Clock
 
 
+@mark.unit
 class TestClockShould:
     def test_return_todays_date_in_dd_mm_yyyy_format(self):
         clock = TestableClock()

@@ -1,7 +1,9 @@
+from ..domain.statement_printer import StatementPrinter
+
 STATEMENT_HEADER = 'DATE | AMOUNT | BALANCE'
 
 
-class StatementPrinter:
+class ConsoleStatementPrinter(StatementPrinter):
     def __init__(self, console):
         self.console = console
 

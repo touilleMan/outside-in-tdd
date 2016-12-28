@@ -1,7 +1,8 @@
-from .transaction import Transaction
+from app.domain.transaction import Transaction
+from app.domain.transaction_repository import TransactionRepository
 
 
-class TransactionRepository:
+class InMemoryTransactionRepository(TransactionRepository):
     def __init__(self, clock):
         self.clock = clock
         self.transactions = []
