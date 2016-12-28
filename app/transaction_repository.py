@@ -7,11 +7,12 @@ class TransactionRepository:
         self.transactions = []
 
     def add_deposit(self, amount):
-        deposit_transaction = Transaction(self.clock.today_as_string(), amount)
-        self.transactions.append(deposit_transaction)
+        deposit = Transaction(self.clock.today_as_string(), amount)
+        self.transactions.append(deposit)
 
     def add_withdrawal(self, amount):
-        raise NotImplementedError()
+        withdrawal = Transaction(self.clock.today_as_string(), -amount)
+        self.transactions.append(withdrawal)
 
     def all_transactions(self):
         return tuple(self.transactions)
