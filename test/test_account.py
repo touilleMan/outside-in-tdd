@@ -20,7 +20,7 @@ class TestAccountShould:
         self.transaction_repository.add_withdrawal.assert_called_with(100)
 
     def test_print_a_statement(self):
-        transactions = [Transaction()]
+        transactions = [Transaction("12/05/2015", 100)]
         self.transaction_repository.all_transactions.return_value = transactions
 
         self.account.print_statement()

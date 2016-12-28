@@ -1,4 +1,6 @@
 from unittest.mock import Mock, call
+
+from app.clock import Clock
 from app.console import Console
 from app.account import Account
 from app.statement_printer import StatementPrinter
@@ -7,7 +9,8 @@ from app.transaction_repository import TransactionRepository
 
 class TestPrintStatementFeature:
     def setup_method(self):
-        transaction_repository = TransactionRepository()
+        clock = Mock(Clock)
+        transaction_repository = TransactionRepository(clock)
         statement_printer = StatementPrinter
         self.account = Account(transaction_repository, statement_printer)
 
