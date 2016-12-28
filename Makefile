@@ -1,5 +1,5 @@
 
-.PHONY: feature test
+.PHONY: test
 
 pyenv:
 	pyenv install -s 3.4.5
@@ -8,11 +8,14 @@ pyenv:
 requirements:
 	pip install -Ur requirements.txt
 
-feature:
+test-feature:
 	pytest feature
 
 test:
 	pytest test
+
+test-all:
+	pytest test feature
 
 run:
 	python -m app.application
