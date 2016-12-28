@@ -45,3 +45,17 @@ class Account:
 Note: the three public methods are commands, they don't return anything.
 
 Note: I cannot add query methods, I cannot query for the state.
+
+## Requirements
+
+You need Python 3.4 or compatible. If you have pyenv installed, you can:
+
+    $ make pyenv
+
+Once you have a compatible version of Python installed, you can install the requirements:
+
+    $ make requirements
+
+## Running the tests
+
+See the `Makefile`.
