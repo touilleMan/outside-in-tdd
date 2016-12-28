@@ -20,3 +20,6 @@ test-all:
 run:
 	python -m app.application
 
+clean:
+	find . \( -name \*.pyc -o -name \*.pyo -o -name __pycache__ \) -prune -delete
+
