@@ -11,12 +11,11 @@ class TestPrintStatementFeature:
     def setup_method(self):
         clock = Mock(Clock)
         transaction_repository = TransactionRepository(clock)
-        statement_printer = StatementPrinter()
+        self.console = Mock(Console)
+        statement_printer = StatementPrinter(self.console)
         self.account = Account(transaction_repository, statement_printer)
 
     def test_print_statement_containing_all_transactions(self):
-        console = Mock(Console)
-
         self.account.deposit(1000)
         self.account.withdraw(100)
         self.account.deposit(500)
@@ -29,4 +28,4 @@ class TestPrintStatementFeature:
             call("02/04/2014 | -100.00 | 900.00"),
             call("01/04/2014 | 1000.00 | 1000.00"),
         ]
-        console.print_line.assert_has_calls(calls)
+        self.console.print_line.assert_has_calls(calls)

@@ -1,3 +1,3 @@
 class Console:
-    def print_line(self):
+    def print_line(self, line):
         raise NotImplementedError()
