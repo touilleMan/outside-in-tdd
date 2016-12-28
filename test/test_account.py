@@ -1,8 +1,9 @@
 from unittest.mock import Mock
+
 from app.account import Account
 from app.statement_printer import StatementPrinter
-from app.transaction_repository import TransactionRepository
 from app.transaction import Transaction
+from app.transaction_repository import TransactionRepository
 
 
 class TestAccountShould:
