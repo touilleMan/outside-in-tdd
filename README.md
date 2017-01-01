@@ -67,6 +67,9 @@ See the `Makefile`.
 - withdrawal = retrait
 - balance = solde
 
+- `Run` = `ctrl-R`
+- `Run...` = `ctrl-alt-R`
+
 ### Présentation
 
 - Bien expliquer la fonctionnalité au départ (souligner le mot de transaction,
@@ -118,6 +121,23 @@ See the `Makefile`.
 ### Print statement
 
 - Retour au test d'`Account`
+- The `Account` class is a high level class, it should not know about the
+  details of formating a statement.
+- Bien passer par l'étape `statement_printer.print()` n'est jamais appelée dans
+  les tests.
+- Il y a eu beaucoup de décisions de design à cette étape.
+- Pourquoi avoir créé une classe `Transaction` ? Parce que c'est ce qu'on veut
+  imprimser, et c'est ce que stoque le `Transactionrepository`. Si on regrade
+  les specs, ce sera surement l'association date / montant. 
+- La classe `Account` est terminée, les méthodes sont au même niveau
+  d'abstraction.
+- What to do next ⇐ feature test failure.
+
+### TransactionRepository
+
+- In a real app, this would be an integrated test, inserting and querying the
+  database. For the sake of this exercise, we create an in memory repository.
+
 
 ## Hindsights
 
