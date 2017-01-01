@@ -3,18 +3,18 @@ from unittest.mock import Mock
 from pytest import mark
 
 from app.domain.transaction import Transaction
-from app.infra.clock import Clock
-from app.infra.in_memory_transaction_repository import InMemoryTransactionRepository
+from app.infrastructure.clock import Clock
+from app.infrastructure.transaction_in_memory_repository import TransactionInMemoryRepository
 
 TODAY = "12/05/2015"
 
 
 @mark.unit
-class TestInMemoryTransactionRepositoryShould:
+class TestTransactionInMemoryRepositoryShould:
     def setup_method(self):
         self.clock = Mock(Clock)
         self.clock.today_as_string.return_value = TODAY
-        self.transaction_repository = InMemoryTransactionRepository(self.clock)
+        self.transaction_repository = TransactionInMemoryRepository(self.clock)
 
     def test_create_and_store_a_deposit_transaction(self):
         self.transaction_repository.add_deposit(100)

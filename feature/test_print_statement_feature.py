@@ -1,18 +1,18 @@
 from unittest.mock import Mock, call
 
 from app.domain.account import Account
-from app.infra.clock import Clock
-from app.infra.console import Console
-from app.infra.console_statement_printer import ConsoleStatementPrinter
-from app.infra.in_memory_transaction_repository import InMemoryTransactionRepository
+from app.infrastructure.clock import Clock
+from app.infrastructure.console import Console
+from app.infrastructure.statement_console_printer import StatementConsolePrinter
+from app.infrastructure.transaction_in_memory_repository import TransactionInMemoryRepository
 
 
 class TestPrintStatementFeature:
     def setup_method(self):
         self.clock = Mock(Clock)
-        transaction_repository = InMemoryTransactionRepository(self.clock)
+        transaction_repository = TransactionInMemoryRepository(self.clock)
         self.console = Mock(Console)
-        statement_printer = ConsoleStatementPrinter(self.console)
+        statement_printer = StatementConsolePrinter(self.console)
         self.account = Account(transaction_repository, statement_printer)
 
     def test_print_statement_containing_all_transactions(self):

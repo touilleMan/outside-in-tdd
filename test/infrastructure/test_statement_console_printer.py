@@ -3,17 +3,17 @@ from unittest.mock import Mock, call
 from pytest import mark
 
 from app.domain.transaction import Transaction
-from app.infra.console import Console
-from app.infra.console_statement_printer import ConsoleStatementPrinter
+from app.infrastructure.console import Console
+from app.infrastructure.statement_console_printer import StatementConsolePrinter
 
 NO_TRANSACTIONS = []
 
 
 @mark.unit
-class TestConsoleStatementPrinter:
+class TestStatementConsolePrinter:
     def setup_method(self):
         self.console = Mock(Console)
-        self.statement_printer = ConsoleStatementPrinter(self.console)
+        self.statement_printer = StatementConsolePrinter(self.console)
 
     def test_statement_printer_should_always_print_the_header(self):
         self.statement_printer.print(NO_TRANSACTIONS)

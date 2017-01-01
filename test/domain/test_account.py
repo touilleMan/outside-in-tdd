@@ -1,9 +1,10 @@
 from unittest.mock import Mock
+
 from pytest import mark
 
 from app.domain.account import Account
-from app.domain.transaction import Transaction
 from app.domain.statement_printer import StatementPrinter
+from app.domain.transaction import Transaction
 from app.domain.transaction_repository import TransactionRepository
 
 

@@ -1,15 +1,15 @@
 from .domain.account import Account
-from .infra.clock import Clock
-from .infra.console import Console
-from .infra.console_statement_printer import ConsoleStatementPrinter
-from .infra.in_memory_transaction_repository import InMemoryTransactionRepository
+from .infrastructure.clock import Clock
+from .infrastructure.console import Console
+from .infrastructure.statement_console_printer import StatementConsolePrinter
+from .infrastructure.transaction_in_memory_repository import TransactionInMemoryRepository
 
 
 def main():
     clock = Clock()
-    transaction_repository = InMemoryTransactionRepository(clock)
+    transaction_repository = TransactionInMemoryRepository(clock)
     console = Console()
-    statement_printer = ConsoleStatementPrinter(console)
+    statement_printer = StatementConsolePrinter(console)
     account = Account(transaction_repository, statement_printer)
 
     account.deposit(1000)

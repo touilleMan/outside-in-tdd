@@ -1,7 +1,8 @@
 import datetime
+
 from pytest import mark
 
-from app.infra.clock import Clock
+from app.infrastructure.clock import Clock
 
 
 @mark.unit
