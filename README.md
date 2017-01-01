@@ -73,7 +73,7 @@ See the `Makefile`.
   montrer l'ordre chronologique inverse)
 - Commencer par écrire le feature test
 - We need to identify the side effects, what are we testing in this acceptance
-  test? print this ordered transaction statements to the console. So that's
+  test? Print this ordered transaction statements to the console. So that's
   what we should be testing for.
 - Bien insister : on traite la console comme un système extérieur, comme on
   traiterait une base de données.
@@ -85,13 +85,13 @@ See the `Makefile`.
 
 ### Account
 
-- why two methods: "I don't deposit -100, that doesn't make sense. Paying
+- Why two methods: "I don't deposit -100, that doesn't make sense. Paying
   attention to that semantic is very important."
-- before I move on, I want to see my acceptance test fail for the right reason
+- Before I move on, I want to see my acceptance test fail for the right reason
   ⇒ remove NotImplementedError
-- acceptance test fails for the right reason ⇒ time to park acceptance test
+- Acceptance test fails for the right reason ⇒ time to park acceptance test
   (double loop of TDD)
-- why not inject console into account? I'm not quite sure that the account
+- Why not inject console into account? I'm not quite sure that the account
   should call the console. I don't know how many abstractions will be between
   the account and the console.
 
@@ -100,20 +100,31 @@ See the `Makefile`.
 - Simplest test I could possibly find. The deposit is an interesting candidate.
 - All the methods in the account class are commands according to the initial
   constraints. I cannot change this interface.
-- problems with classic TDD : expose query methods for the purpose of testing.
-- storing total balance in account is not necessary for this feature.
-- What is the side effect of a deposit? What do I want to happent when a
-  deposit is made?
+- Problems with classic TDD : expose query methods for the purpose of testing.
+- Storing total balance in account is not necessary for this feature.
+- What is the side effect of a deposit? What do I want to happen when a deposit
+  is made?
 - I need to bind an amount to a date ⇒ transaction (montrer le README)
-- si date + amount + balance dans le même objet, si on reçoit les transactions
-  dans le désordre (batches), il faut recalculer le solde
+- Si date + amount + balance dans le même objet, si on reçoit les transactions
+  dans le désordre (batches), il faut recalculer le solde des autres
+  transactions (!)
 - Design = trade-off
-- deposit = a lot of stuff: somehow get the current date, create transaction,
+- Deposit = a lot of stuff: somehow get the current date, create transaction,
   store it... Defer some of it?
-- the account itself shoud not know how the transaction is stored ⇒ repository
+- The account itself shoud not know how the transaction is stored ⇒ repository
   pattern
 - Dans le TU on mocke le TransactionRepository, pas dans l'acceptance test.
 
 ### Print statement
 
+- Retour au test d'`Account`
+
+## Hindsights
+
+- On a beaucoup parlé de design, plus que de test ou de qualité
+- Les tests ont permis de retarder les décisions de design
+    - Retarder les décisions de design a permis de faire des choix non pas au
+      bon moment, mais au bon niveau d'abstraction ⇒ retarder non pas pour
+      éviter de réfléchir, mais retarder quand ce n'est pas le bon niveau
+      d'abstraction
 
