@@ -91,7 +91,7 @@ See the `Makefile`.
 - Why two methods: "I don't deposit -100, that doesn't make sense. Paying
   attention to that semantic is very important."
 - Before I move on, I want to see my acceptance test fail for the right reason
-  ⇒ remove NotImplementedError
+  ⇒ remove `raise NotImplementedError()`
 - Acceptance test fails for the right reason ⇒ time to park acceptance test
   (double loop of TDD)
 - Why not inject console into account? I'm not quite sure that the account
@@ -116,7 +116,7 @@ See the `Makefile`.
   store it... Defer some of it?
 - The account itself shoud not know how the transaction is stored ⇒ repository
   pattern
-- Dans le TU on mocke le TransactionRepository, pas dans l'acceptance test.
+- Dans le TU on mocke le `TransactionRepository`, pas dans l'acceptance test.
 
 ### Print statement
 
@@ -127,7 +127,7 @@ See the `Makefile`.
   les tests.
 - Il y a eu beaucoup de décisions de design à cette étape.
 - Pourquoi avoir créé une classe `Transaction` ? Parce que c'est ce qu'on veut
-  imprimser, et c'est ce que stoque le `Transactionrepository`. Si on regrade
+  imprimer, et c'est ce que stocke le `Transactionrepository`. Si on regarde
   les specs, ce sera surement l'association date / montant. 
 - La classe `Account` est terminée, les méthodes sont au même niveau
   d'abstraction.
@@ -137,6 +137,27 @@ See the `Makefile`.
 
 - In a real app, this would be an integrated test, inserting and querying the
   database. For the sake of this exercise, we create an in memory repository.
+- Selon les specs, quand on store une transaction on doit stocker la date. Pour
+  les tests, on doit contrôler les variables de type date, random, etc. On ne
+  peut pas tester ce qu'on ne contrôle pas. La date système est quelque chose
+  qu'on ne contrôle pas, elle change à chaque appel. On doit remplacer l'appel
+  système par quelque chose qu'on contrôle. ⇒ `Clock`.
+- Pas mal de décisions de design à cette étape.
+- Dans le test d'acceptance, comme clock représente quelque chose d'extérieur
+  au système qu'on ne contrôle pas et qu'on a besoin de contrôler, on mock la
+  `Clock`.
+- La classe `TransactionRepository` est terminée.
+
+### Clock
+
+- On isole l'effet de bord système au maximum, et on surcharge la méthode
+  `today()` à l'ancienne (TDD classique).
+- `Clock` done.
+
+### StatementPrinter
+
+- Retour aux specs, le plus simple est de commencer par le header avec une
+  liste de transactions vide.
 
 
 ## Hindsights
