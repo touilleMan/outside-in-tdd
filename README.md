@@ -25,7 +25,7 @@ Statement should have transactions in the following format:
 
 1. Start with a class with the following structure:
 
-```
+```python
 class Account:
     def deposit(self, amount):
         raise NotImplementedError()
