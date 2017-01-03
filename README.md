@@ -167,5 +167,13 @@ See the `Makefile`.
     - Retarder les décisions de design a permis de faire des choix non pas au
       bon moment, mais au bon niveau d'abstraction ⇒ retarder non pas pour
       éviter de réfléchir, mais retarder quand ce n'est pas le bon niveau
-      d'abstraction
+      d'abstraction.
+- On a pu définir le domaine sans se préoccuper du choix de la base de données.
+- D'ailleurs on pourrait très facilement implémenter une persistance, ce qui
+  poserait des questions de conf et de setup, mais on a pu travailler sur le
+  domaine et la fonctionnalité en TU sans avoir à s'en préoccuper. 
+- Les données persistées ne correspondent pas exactement aux classes du
+  domaine.
+- Les données lues dans la console ne correspondent pas exactement aux classes
+  du domaine.
 
